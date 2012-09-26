@@ -1,0 +1,127 @@
+<!DOCTYPE HTML>
+  <html>
+    <head>
+ 
+      <title> Antagonist Carlos </title>
+ 
+            <script>
+             var total=0;
+             var hasVistedNorth=false;    // use gobal variables for keeping score//
+             var hasVistedSouth=false;
+             var hasVistedEast=false;
+             var hasVistedWest=false;
+ 
+            function west(){
+                var msg_1="You are in a back alley. You fish out a ratty town map from your storm grey suite pocket and look up Sinso Publishing. Sinso Publishing is south of the subway station. Your are standing next to the subway station."
+                alert(msg_1);
+                if (!hasVistedWest) {
+                    total=total+5;
+                    hasVistedWest=true;
+                }
+              }
+ 
+            function east() {
+                var msg_2="You are standing next to Rob's Rent A Car. There are several cars able, some with the widows down. You realize that driving to Sinso Publishing will be faster then walking and that Sinso Publishing is south of Rob's."
+                alert(msg_2);
+                if(! hasVistedEast) {      // always use ! with if//
+                total=total+5;
+                hasVistedEast=true;
+                }
+             }
+ 
+            function north() {
+                var msg_3="You are at your apartment building. You realize that Sinso is in the east and that there is an airport. You realize that some of those planes will be open and you can fly to Sinso."
+                alert(msg_3);
+                if (hasVistedNorth) {
+                total=total+5;
+                hasVistedNorth
+                }
+              }
+ 
+
+            function south() {
+                var msg_4="You are at 361 St. it is a charming street, filled with clothing shops and gift stores. Your realize that Sinso is on 456 St, which is 21 blocks away."
+                alert(msg_4);
+                if (hasVistedSouth) {
+                total=total+5;
+                hasVistedSouth=true
+                }
+             }
+ 
+             function highjack() {
+                var msg_5="YOu drive right to Sinso, and slam your car through the glass door. You go down the stairs, only to find your author. He smiles at you as he pulls out a pistol and shoots you twice in the chest.You die and meet your fellow gangsters in Hell."
+                alert(msg_5);
+                }
+ 
+             function ride() {
+                var msg_6="You run down the subway and by a ticket. You hop on a yellow striped train and it arrives across the street from Sinso. YOu calmy walk down the stairs and see a brass door. YOu open it and appear in your author's bedroom. YOu pull out your pistol and shoot him in the chest five times. The police hunt you done. At your trial, they find you guilty of murder and you are sent to prison. 50 years later, you are given lethal injection."
+                alert(msg_6);
+                }
+ 
+             function give(){
+                var msg_7="You give your pistol to a gunsmith. In exchange, he gives you the AK-47 and you thank him."
+                alert(msg_7);
+                }
+ 
+             function take(){
+                var msg_8="You gently take the gas can.  You then place it in the trunk of your car."
+                alert(msg_8);
+                }
+ 
+             function opendoor(){
+                var msg_9="You thrust open the glass door. A loud bang follows and alerts the guards."
+                alert(msg_9);
+                }
+ 
+             function closedoor(){
+                var msg_10="You gently close your apartment door. Shocked, you read the book, only to find out that George Witman is going to kill you by injecting cyanide in your sleep."
+                alert(msg_10);
+              }
+ 
+             function shoot(){
+                var msg_11="You rapidly pull out your black AK-47 and blast at the guards. the coast is clear and you can now go down to the basement."
+                alert(msg_11);
+              }
+ 
+             function climb(){
+                      var msg_12="You slowly climb up  the stairs and enter the editor's office."
+                alert(msg_12);
+              }
+ 
+              function score(){
+                      var msg_12="Your score is  " + total
+                alert(msg_12);
+              }
+ 
+
+
+
+          </script>
+           
+
+         </head>
+         <body>
+               
+          <h1>Antagonist Carlos</h1>
+          <input type="button" value="West" onclick="west() ;">
+          <input type="button" Value="East" onclick="east() ;">
+          <input type="button" value="North" onclick="north() ;">
+          <input type="button" value="South" onclick="south() ;">
+          <input type="button" value="Highjack" onclick="highjack() ;">
+          <input type="button" value="Ride" onclick="ride() ;">
+          <input type="button" value="Give" onclick="give() ;">
+          <input type="button" value="Take" onclick= "take() ;">
+          <input type="button" value="Open door" onclick= "opendoor() ;">
+          <input type="button" value="Climb" onclick="climb() ;">
+          <input type="button" value="Close door" onclick="closedoor() ;">
+          <input type="button" value="Score" onclick="score() ;">
+          <input type="button" value="Shoot" onclick="shoot() ;">
+         </p>
+         <textarea rows=30 cols=50> You are in a bookstore. There, on a shelf, a cheap paper back thriller catches your attention. You lift it up and see that is called " Drug Lord Down". Curious and slighty board, you open up the book to a random page, only to discover that your name, Carlos Lucus Forerunner, is in the book. You also realize that the book is through the police's view, and that you are the antagonist. Shocked, you read on, on to discover that he is, like you, a drug smuggler that belongs to the gang. THe Pitbulls. He is also being chased by the Dark City Police and his wife was murdered by a rival gang member, just like you. You buy the book and look at the spine. The book was published by a company called Sinso and you realize that your only chance is to get to Sinso.
+            </textarea>
+         </p>
+            <a>
+                <a href="mailto:Amelia.Beckham2@marist.edu">This is my mailto
+            </a>
+ 
+      </body> 
