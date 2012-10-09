@@ -19,27 +19,27 @@
 
             function west(){
  
-                if (location ==0)
+                if (location ===0)
                    {
                    location =1;
-                   GPS(location);
+                   
  
-                  }else if (location==1)
+                  }else if (location===1)
                    updateDisplay( " You can not leave the city, unless if you have an airplane");
  
-                   else if (location ==2)
+                   else if (location ===2)
  
                    updateDisplay( " You can not leave the city, unless if you have an airplane.");
-                    else if ( location ==3)
+                    else if ( location ===3)
                     {
                     location =0;
                     GPS(location);
                     //updateDisplay(" YOu are at the bookstore. You can enter the book store or you can go north, south or east");
  
                    }
-                    else if (location==4)
+                    else if (location===4)
                     updateDisplay(" You can not exit the city with out an airplane");
-                    else if ( location==5)
+                    else if ( location===5)
                     updateDisplay( " you are stuck at an terminal. It's 12 hours before your flight. Do you want to explore the city, besides west, because that is were the peolice headquarters are.");
  
                 if (!hasVistedWest) {
@@ -132,23 +132,23 @@
            }
  
            function GPS ( location) {
-            //if (direction == 1) take in location number, output message dependent upon location;
+            //if (direction === 1) take in location number, output message dependent upon location;
             {
  
-                   if (location==0)
+                   if (location===0)
                     { updateDisplay(" you are back at the book store, you fish out your map and see that you can go north, south, east, or west.");
                     }
-                    else if(location==1)
+                    else if(location===1)
                     {
                      updateDisplay("You are in a back alley. You fish out a ratty town map from your storm grey suite pocket and look up Sinso Publishing. Sinso Publishing is south of the subway station. Your are standing next to the subway station.");
                     } else if ( location== 1);
                     location=2;
                     { else if location==3);
                     location =3;
-                else if (direction == 2); {
+                else if (direction === 2); {
                 updateDisplay ("moving east");
  
-               } else if { ( direction==3); {
+               } else if { ( direction===3); {
                 updateDisplay( " moving south");
  
 
