@@ -1,0 +1,118 @@
+<!DOCTYPE HTML>
+   <html>
+     <head>
+ 
+      <title> Antagonist Carlos </title>
+ 
+            <script>
+		var total=0;
+		var hasVistedNorth=false;    // use gobal variables for keeping score//
+		var hasVistedSouth=false;
+		var hasVistedEast=false;
+		var hasVistedWest=false;
+		var location=0;
+		var WEST=1;
+		var EAST=2;
+		var NORTH=3;
+		var SOUTH=4;
+              
+
+	function move(direction) {
+		if (direction === WEST) {
+		updateDisplay("You can not leave the city, unless if you have an airplane");
+			if (!hasVistedWest) {
+			total=total+5;
+			hasVistedWest=true;
+			}
+		}
+		else if (direction === EAST) {
+		updateDisplay("You are standing next to Rob's Rent A Car. There are several cars able, some with the widows down. You realize that driving to Sinso Publishing will be faster then walking and that Sinso Publishing is south of Rob's.");
+			if (!hasVistedEast) {
+			total=total+5;
+			hasVistedEast=true;
+			}
+		}
+		else if (direction === NORTH) {
+		updateDisplay("You are at your apartment building. You realize that Sinso is in the east and that there is an airport. You realize that some of those planes will be open and you can fly to Sinso.");
+ 			if (!hasVistedNorth) {
+			total=total+5;
+			hasVistedNorth=true;
+			}
+		}   
+		else if (direction === SOUTH) {
+		updateDisplay("You are at 361 St. it is a charming street, filled with clothing shops and gift stores. Your realize that Sinso is on 456 St, which is 21 blocks away.");
+			if (!hasVistedSouth) {
+			total=total+5;
+			hasVistedSouth=true;
+			}
+		}
+	}
+
+	
+	function score(){
+		var msg_score="Your score is  " + total;
+		alert(msg_score);
+	}
+
+	function updateDisplay(message){
+		var ta = document.getElementById("game");
+		ta.value = message + "\n" + "\n" + ta.value;
+	}
+  
+	function compass(){
+		var idirection = document.getElementById("inputdirection");
+		userdirection=idirection.value;
+		document.getElementById("inputdirection").value="";
+		switch (userdirection){
+		case "W": move(WEST);
+		break;
+		case "w": move(WEST);
+ 		break;
+		case "E": move(EAST);
+		break;
+		case "e": move(EAST);
+		break;
+		case "N": move(NORTH);
+		break;
+ 		case "n": move(NORTH);
+		break;
+		case "S": move(SOUTH);
+		break;
+ 		case "s": move(SOUTH);
+		break;
+		default:updateDisplay("That is not a valid direction.  Valid directions are N, n, S, s, E, e, W and w.");
+		}
+ 	}
+	</script>	
+	</head>
+	<body>
+
+	<h1>Antagonist Carlos</h1>
+
+	<input	type="button"
+		value="West"
+		style="background-color:#33cc33"
+		onclick="move(WEST);">
+	<input	type="button"
+		Value="East"
+		onclick="move(EAST);">
+	<input	type="button"
+		value="North"
+		onclick="move(NORTH);">
+	<input 	type="button"
+		value="South"
+		onclick="move(SOUTH);">
+	<input 	type="button"
+		value="Score"
+		onclick="score() ;">
+	<p>
+	<textarea rows="30" cols="70" id="game"> You are in a bookstore. There, on a shelf, a cheap paper back thriller catches your attention.  You lift it up and see that is called " Drug Lord Down". Curious and slighty board, you open up the book to a random page, only to discover that your name, Carlos Lucus Forerunner, is in the book. You also realize that the book is through the police's view, and that you are the antagonist. Shocked, you read on, on to discover that he is, like you, a drug smuggler that belongs to the gang. The Pitbulls. He is also being chased by the Dark City Police and his wife was murdered by a rival gang member, just like you. You buy the book and look at the spine. The book was published by a company called Sinso and you realize that your only chance is to get to Sinso.</textarea>
+	</p>
+       
+	Direction: <input type="text" id="inputdirection"><br>
+	<input type="button" value="Go" onclick="compass() ;"><br>
+          
+ 	<br>
+	<a href="mailto:Amelia.Beckham2@marist.edu">This is my mailto</a>
+ 
+	</body> 
