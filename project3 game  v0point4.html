@@ -4,17 +4,17 @@
 <head>
 <title> Antagonist Carlos </title>
 <script>
-var total = 0;
-var hasVistedNorth = false;
-// use gobal variables for keeping score//
-var hasVistedSouth = false;
-var hasVistedEast = false;
-var hasVistedWest = false;
-var location = 4;
-var WEST = 1;
-var EAST = 2;
-var NORTH = 3;
-var SOUTH = 4;
+   // use gobal variables for keeping score//
+   var total = 0;
+   var hasVistedNorth = false;
+   var hasVistedSouth = false;
+   var hasVistedEast = false;
+   var hasVistedWest = false;
+   var location = 4;
+   var WEST = 1;
+   var EAST = 2;
+   var NORTH = 3;
+   var SOUTH = 4;
 
 /*  Function move(direction) takes input from either the text box or the buttons.  Input will be either 1, 2, 3 or 4, depending on the direction chosen.  Function has 4 parts corresponding
 to the four directions you can move in.  Each part then makes the move based on the input direction and updates the score.  */
@@ -430,39 +430,39 @@ function compass()
          updateDisplay("That is not a valid direction.  Valid directions are N, n, S, s, E, e, W and w.");
    }
 }
-</script>
+   </script>
 </head>
 <body>
 
-<h1>Antagonist Carlos</h1>
+   <h1>Antagonist Carlos</h1>
 
-<input	type="button"
-id="wbutton"
-value="West"
-onclick="move(WEST);">
-<input	type="button"
-id="ebutton"
-Value="East"
-onclick="move(EAST);">
-<input	type="button"
-id="nbutton"
-value="North"
-onclick="move(NORTH);">
-<input 	type="button"
-id="sbutton"
-value="South"
-onclick="move(SOUTH);">
-<input 	type="button"
-value="Score"
-onclick="score() ;">
-<p>
-<textarea rows="30" cols="70" id="game"> You are in a bookstore. There, on a shelf, a cheap paper back thriller catches your attention.  You lift it up and see that is called " Drug Lord Down". Curious and slighty board, you open up the book to a random page, only to discover that your name, Carlos Lucus Forerunner, is in the book. You also realize that the book is through the police's view, and that you are the antagonist. Shocked, you read on, on to discover that he is, like you, a drug smuggler that belongs to the gang. The Pitbulls. He is also being chased by the Dark City Police and his wife was murdered by a rival gang member, just like you. You buy the book and look at the spine. The book was published by a company called Sinso and you realize that your only chance is to get to Sinso.</textarea>
-</p>
+   <input type="button"
+   id="wbutton"
+   value="West"
+   onclick="move(WEST);">
+   <input	type="button"
+   id="ebutton"
+   Value="East"
+   onclick="move(EAST);">
+   <input type="button"
+   id="nbutton"
+   value="North"
+   onclick="move(NORTH);">
+   <input type="button"
+   id="sbutton"
+   value="South"
+   onclick="move(SOUTH);">
+   <input type="button"
+   value="Score"
+   onclick="score() ;">
+   <p>
+   <textarea rows="30" cols="70" id="game"> You are in a bookstore. There, on a shelf, a cheap paper back thriller catches your attention.  You lift it up and see that is called " Drug Lord Down". Curious and slighty board, you open up the book to a random page, only to discover that your name, Carlos Lucus Forerunner, is in the book. You also realize that the book is through the police's view, and that you are the antagonist. Shocked, you read on, on to discover that he is, like you, a drug smuggler that belongs to the gang. The Pitbulls. He is also being chased by the Dark City Police and his wife was murdered by a rival gang member, just like you. You buy the book and look at the spine. The book was published by a company called Sinso and you realize that your only chance is to get to Sinso.</textarea>
+   </p>
 
-Direction: <input type="text" id="inputdirection"><br>
-<input type="button" value="Go" onclick="compass() ;"><br>
+   Direction: <input type="text" id="inputdirection"><br>
+   <input type="button" value="Go" onclick="compass() ;"><br>
 
-<br>
-<a href="mailto:Amelia.Beckham2@marist.edu">This is my mailto</a>
+   <br>
+   <a href="mailto:Amelia.Beckham2@marist.edu">This is my mailto</a>
 
 </body> =
