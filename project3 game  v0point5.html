@@ -307,7 +307,7 @@ function edbutton(location)
 {
    switch(location)
    {
-      case "1":
+      case 1:
       document.getElementById("wbutton").disabled = true;
       document.getElementById("ebutton").disabled = false;
       document.getElementById("sbutton").disabled = false;
@@ -349,34 +349,35 @@ function edbutton(location)
       document.getElementById("ebutton").disabled = false;
       document.getElementById("sbutton").disabled = false;
       document.getElementById("nbutton").disabled = false;
-   }
-   else if (location == 7)
-   {
+      break:
+
+      case "7";
       document.getElementById("wbutton").disabled = false;
       document.getElementById("ebutton").disabled = true;
       document.getElementById("sbutton").disabled = false;
       document.getElementById("nbutton").disabled = false;
-   }
-   else if (location == 8)
-   {
+      break:
+
+      case "8";
       document.getElementById("wbutton").disabled = true;
       document.getElementById("ebutton").disabled = false;
       document.getElementById("sbutton").disabled = true;
       document.getElementById("nbutton").disabled = false;
-   }
-   else if (location == 9)
-   {
+      break:
+
+      case "9";
       document.getElementById("wbutton").disabled = false;
       document.getElementById("ebutton").disabled = true;
       document.getElementById("sbutton").disabled = true;
       document.getElementById("nbutton").disabled = true;
-   }
-   else if (location == 10)
-   {
+      break:
+
+      case "10";
       document.getElementById("wbutton").disabled = false;
       document.getElementById("ebutton").disabled = false;
       document.getElementById("sbutton").disabled = true;
       document.getElementById("nbutton").disabled = false;
+      break:
    }
 }
 
