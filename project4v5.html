@@ -1,0 +1,471 @@
+<!DOCTYPE HTML>
+   <html>
+     <head>
+ 
+      <title> Antagonist Carlos </title>
+ 
+            <script>
+		var total=0;
+		var hasVistedNorth=false;    // use gobal variables for keeping score//
+		var hasVistedSouth=false;
+		var hasVistedEast=false;
+		var hasVistedWest=false;
+		var location=4;
+		var WEST=1;
+		var EAST=2;
+		var NORTH=3;
+		var SOUTH=4;
+                var APARTMENT=1;
+                var AIRPORT=2;
+                var ALLEY=3;
+                var BOOKSTORE=4;
+                var ROBS=5;
+                var SUBWAY=6;
+                var STREET=7;
+                var CONSTRUCTION=8;
+                var SINSO=9;
+                var BILLYBOBS=10;
+ 
+	function ycngtwmsg(){
+		updateDisplay("You can not go that way.");
+	}
+             
+        function apartmentmsg(){
+		updateDisplay("You are at your apartment building.");
+	}
+
+        function alleymsg(){
+		updateDisplay("You are in a back alley. You fish out a ratty town map from your storm grey suit pocket and look up Sinso Publishing.");
+	}
+
+        function bookstoremsg(){
+		updateDisplay("You are back at the bookstore.");
+	}
+
+        function subwaymsg(){
+		updateDisplay("You have entered a subway station.");
+	}
+
+        function billybobsmsg(){
+		updateDisplay("You are at Billie Bob's Biker Bar and Bar-B-Q.");
+	}
+
+        function constructionmsg(){
+		updateDisplay("You are wandering around an abandoned construction site.");
+	}
+
+        function airportmsg(){
+		updateDisplay("You are stuck at an airport terminal.  Your flight is in 12 hours.  Do you want to explore the city?");
+	}
+
+        function robsmsg(){
+		updateDisplay("You are standing next to Robs's Rent-A-Car.  There are several cars available, some with their windows open.");
+	}
+
+        function streetmsg(){
+		updateDisplay("You are 361 St.  It is a charming street, filled with shops and gift stores.");
+	}
+
+        function sinsomsg(){
+		updateDisplay("You have arrived at Sinso Publishing");
+	}
+
+
+/*  Function move(direction) takes input from either the text box or the buttons.  Input will be either 1, 2, 3 or 4, depending on the direction chosen.  Function has 4 parts corresponding
+		to the four directions you can move in.  Each part then makes the move based on the input direction and updates the score.  */
+
+	function move(direction) {
+		switch(direction) {
+			case (WEST):
+                             switch (location) { 
+                                case (APARTMENT):
+				     ycngtwmsg();
+				     westvalid = false;
+                                break;
+			        case (AIRPORT):
+				     apartmentmsg();
+				     westvalid = true;
+				     location = APARTMENT;
+				     edbutton(location);
+                                break;
+			        case (ALLEY):
+				     ycngtw();
+				     westvalid = false;
+                                break;
+			        case (BOOKSTORE):
+				     alleymsg();
+				     westvalid = true;
+				     location = ALLEY;
+				     edbutton(location);
+                                break;
+			        case (ROBS):
+				     bookstoremsg();
+				     westvalid = true;
+				     location = BOOKSTORE;
+				     edbutton(location);
+                                break;
+			        case (SUBWAY):
+				     ycngtwmsg();
+				     westvalid = false;
+                                break;
+			        case (STREET):
+				     subwaymsg();
+				     westvalid = true;
+				     location = SUBWAY;
+				     edbutton(location);
+                                break;
+			        case (CONSTRUCTION):
+				     ycngtw();
+				     westvalid = false;
+                                break;
+			        case (SINSO):
+				     billybobsmsg();
+				     westvalid = true;
+				     location =BILLYBOBS;
+				     edbutton(location);
+                                break;
+			        case (BILLYBOBS):
+				     constructionmsg();
+				     westvalid = true;
+				     location = CONSTRUCTION;
+				     edbutton(location);
+                                break;
+			        } if (!hasVistedWest && westvalid) {
+			             total=total+5;
+			             hasVistedWest=true;
+			        }
+                        break;
+		        case (EAST):
+                             switch (location) { 
+			        case (APARTMENT):
+				     airportmsg();
+				     eastvalid = true;
+				     location =AIRPORT;
+				     edbutton(location);
+                                break;
+			        case(AIRPORT):
+				     ycngtw();
+				     eastvalid = false;
+                                break;
+			        case(ALLEY):
+				     bookstoremsg();
+				     eastvalid = true;
+				     location = BOOKSTORE;
+				     edbutton(location);
+                                break;
+			        case (BOOKSTORE):
+				     robsmsg();
+				     eastvalid = true;
+				     location = ROBS;
+				     edbutton(location);
+                                break;
+			        case (ROBS):
+				     ycngtwmsg();
+				     eastvalid = false;
+                                break;
+			        case (SUBWAY):
+				     streetmsg();
+				     eastvalid = true;
+				     location = STREET;
+				     edbutton(location);
+                                break;
+			        case (STREET):
+				     ycngtw();
+				     eastvalid = false;
+                                break;
+			        case (CONSTRUCTION):
+				     billybobsmsg();
+				     eastvalid = true;
+				     location = BILLYBOBS;
+				     edbutton(location);
+                                break;
+			        case (SINSO):
+				     ycngtw();
+				     eastvalid = false;
+                                break;
+			        case (BILLYBOBS):
+				     sinsomsg();
+				     eastvalid = true;
+				     location = SINSO;
+				     edbutton(location);
+                                break;
+			     } if (!hasVistedEast && eastvalid) {
+			          total=total+5;
+			          hasVistedEast=true;
+			     }
+		        break; 
+		        case (NORTH):
+                             switch (location) { 
+			        case (APARTMENT):
+				     ycngtwmsg();
+				     northvalid = false;
+                                break;
+			        case (AIRPORT):
+				     ycngtwmsg();
+				     northvalid = false;
+                                break;
+			        case (ALLEY):
+				     ycngtwmsg();
+				     northvalid = false;
+                                break;
+			        case (BOOKSTORE):
+				     apartmentmsg();
+				     northvalid = true;
+				     location = APARTMENT;
+				     edbutton(location)
+                                break;
+			        case (ROBS):
+				     airportmsg();
+				     northvalid = true;
+				     location =AIRPORT;
+				     edbutton(location);
+                                break;
+			        case (SUBWAY):
+				     alleymsg();
+				     northvalid = true;
+				     location =ALLEY;
+				     edbutton(location);
+                                break;
+			        case (STREET):
+				     bookstoremsg();
+				     northvalid = true;
+				     location = BOOKSTORE;
+				     edbutton(location);
+                                break;
+			        case (CONSTRUCTION):
+				     subwaymsg();
+				     northvalid = true;
+				     location = SUBWAY;
+				     edbutton(location);
+                                break;
+			        case (SINSO):
+				     ycngtwmsg();
+				     northvalid = false;
+                                break;
+			        case (BILLYBOBS):
+				     streetmsg();
+                                     location = STREET;
+				     northvalid = true;
+                                break;
+			     } if (!hasVistedNorth && northvalid) {
+			          total=total+5;
+			          hasVistedNorth=true;
+			}
+		        break;
+		        case (SOUTH):
+                             switch (location) {
+			        case (APARTMENT):
+				     bookstoremsg();
+				     southvalid = true;
+				     location = BOOKSTORE;
+				     edbutton(location);
+                                break;
+			        case (AIRPORT):
+				     robsmsg();
+				     southvalid = true;
+				     location = ROBS;
+				     edbutton(location);
+                                break;
+			        case (ALLEY):
+				     subwaymsg();
+				     southvalid = true;
+				     location = SUBWAY;
+				     edbutton(location);
+                                break;
+			        case (BOOKSTORE):
+				     streetmsg();
+				     southvalid = true;
+				     location = STREET;
+				     edbutton(location);
+                                break;
+			        case (ROBS):
+				     ycngtwmsg();
+				     southvalid = false;
+                                break;
+			        case (SUBWAY):
+				     constructionmsg();
+				     southvalid = true;
+				     location = CONSTRUCTION;
+				     edbutton(location);
+                                break;
+			        case (STREET):
+				     billybobsmsg();
+				     southvalid = true;
+				     location = BILLYBOBS;
+				     edbutton(location);
+                                break;
+			        case (CONSTRUCTION):
+				     ycngtwmsg();
+				     southvalid = false;
+                                break;
+			        case (SINSO):
+				     ycngtwmsg();
+				     southvalid = false;
+                                break;
+			        case (BILLYBOBS):
+				     ycngtwmsg();
+				     southvalid = false;
+                                break;
+			     } if (!hasVistedSouth && southvalid) {
+			          total=total+5;
+			          hasVistedSouth=true;
+			     }
+		     break; 
+               }	
+
+} 
+		
+	/*  Function edbutton(location) - enable disable button - enables or disables buttons depending on the location.  */
+
+	function edbutton(location) {
+                switch(location){
+		     case 1:
+			document.getElementById("wbutton").disabled = true;
+			document.getElementById("ebutton").disabled = false;
+			document.getElementById("sbutton").disabled = false;
+			document.getElementById("nbutton").disabled = true;
+                     break;
+		     case 2:
+			document.getElementById("wbutton").disabled = false;
+			document.getElementById("ebutton").disabled = true;
+			document.getElementById("sbutton").disabled = false;
+			document.getElementById("nbutton").disabled = true;
+                     break;
+		     case 3:
+			document.getElementById("wbutton").disabled = true;
+			document.getElementById("ebutton").disabled = false;
+			document.getElementById("sbutton").disabled = false;
+			document.getElementById("nbutton").disabled = true;
+                     break;
+		     case 4:
+			document.getElementById("wbutton").disabled = false;
+			document.getElementById("ebutton").disabled = false;
+			document.getElementById("sbutton").disabled = false;
+			document.getElementById("nbutton").disabled = false;
+                     break;
+		     case 5:
+			document.getElementById("wbutton").disabled = false;
+			document.getElementById("ebutton").disabled = true;
+			document.getElementById("sbutton").disabled = true;
+			document.getElementById("nbutton").disabled = false;
+		     break;
+                     case 6:
+			document.getElementById("wbutton").disabled = true;
+			document.getElementById("ebutton").disabled = false;
+			document.getElementById("sbutton").disabled = false;
+			document.getElementById("nbutton").disabled = false;
+                     break;
+		     case 7:
+			document.getElementById("wbutton").disabled = false;
+			document.getElementById("ebutton").disabled = true;
+			document.getElementById("sbutton").disabled = false;
+			document.getElementById("nbutton").disabled = false;
+                     break;
+		     case 8:
+			document.getElementById("wbutton").disabled = true;
+			document.getElementById("ebutton").disabled = false;
+			document.getElementById("sbutton").disabled = true;
+			document.getElementById("nbutton").disabled = false;
+                     break;
+		     case 9:
+			document.getElementById("wbutton").disabled = false;
+			document.getElementById("ebutton").disabled = true;
+			document.getElementById("sbutton").disabled = true;
+			document.getElementById("nbutton").disabled = true;
+                     break;
+		     case 10:
+			document.getElementById("wbutton").disabled = false;
+			document.getElementById("ebutton").disabled = false;
+			document.getElementById("sbutton").disabled = true;
+			document.getElementById("nbutton").disabled = false;
+                     break;
+		}
+	}
+
+/* Box to tell player their score */
+
+	function score(){
+		var msg_score="Your score is  " + total;
+		alert(msg_score);
+	}
+        function helpbox(){
+		var msg_help="The object of the game is to move around the map until you find Sinso Publishing.  You can either press a direction button or type E, e, W, w, N, n, S or s to move around.  You can press the Score button to find your current score.";
+		alert(msg_help);
+	}
+	
+/*  Function to take one argument and update the text box with that argument */
+
+	function updateDisplay(message){
+		var ta = document.getElementById("game");
+		ta.value = message + "\n" + "\n" + ta.value;
+	}
+  
+/* Takes user direction input for the four directions and clears input box after direction is input */
+	
+	function compass(){
+		var idirection = document.getElementById("inputdirection");
+		userdirection=idirection.value;
+		document.getElementById("inputdirection").value="";
+		switch (userdirection){
+		case "W": move(WEST);
+		break;
+		case "w": move(WEST);
+ 		break;
+		case "E": move(EAST);
+		break;
+		case "e": move(EAST);
+		break;
+		case "N": move(NORTH);
+		break;
+ 		case "n": move(NORTH);
+		break;
+		case "S": move(SOUTH);
+		break;
+ 		case "s": move(SOUTH);
+		break;
+		default:updateDisplay("I don't understand that input.  Valid values are N, n, S, s, E, e, W and w.");
+		}
+ 	}
+
+        function init() {
+                updateDisplay("You are in a bookstore. There, on a shelf, a cheap paper back thriller catches your attention.  You lift it up and see that is called \"Drug Lord Down\". Curious and slighty board, you open up the book to a random page, only to discover that your name, Carlos Lucus Forerunner, is in the book. You also realize that the book is through the police's view, and that you are the antagonist. Shocked, you read on, on to discover that he is, like you, a drug smuggler that belongs to the gang. The Pitbulls. He is also being chased by the Dark City Police and his wife was murdered by a rival gang member, just like you. You buy the book and look at the spine. The book was published by a company called Sinso and you realize that your only chance is to get to Sinso.");
+        }
+	</script>	
+	</head>
+	<body onload="init()">
+
+	<h1>Antagonist Carlos</h1>
+        <img src = "sinsomap.gif" width="400" height = "400" >
+	<input	type="button"
+		id="wbutton"
+		value="West"
+		onclick="move(WEST);">
+	<input	type="button"
+		id="ebutton"
+		Value="East"
+		onclick="move(EAST);">
+	<input	type="button"
+		id="nbutton"
+		value="North"
+		onclick="move(NORTH);">
+	<input 	type="button"
+		id="sbutton"
+		value="South"
+		onclick="move(SOUTH);">
+	<input 	type="button"
+		value="Score"
+		onclick="score() ;">
+         <input	type="button"
+		value="Help"
+		onclick="helpbox() ;">
+	
+       <br>
+	Direction: <input type="text" id="inputdirection"><br>
+	<input type="button" value="Go" onclick="compass() ;"><br>
+         <p>
+	<textarea align = "center" rows="15" cols="100" id="game">  </textarea>
+	</p>
+ 	<br>
+	<a href="mailto:Amelia.Beckham2@marist.edu">This is my mailto</a>
+ 
+	</body> 
