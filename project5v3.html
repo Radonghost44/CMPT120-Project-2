@@ -1,0 +1,589 @@
+<!DOCTYPE HTML>
+   <html>
+     <head>
+ 
+      <title> Antagonist Carlos </title>
+ 
+            <script type = "text/javascript" src= "locations5v3.js"></SCRIPT>
+
+            <script>
+
+      function Location(id,name,description,item) {
+         this.id = id;
+         this.name = name;
+         this.description = description;
+         this.item = item;
+this.toString=function() {
+       var retVal = "";
+       retVal = this.description + "\n";
+       return retVal;
+     }
+}
+
+
+                var airport = new Location("airport","airport","You are stuck at an airport terminal.  Your flight is in 12 hours.", "Airplane Ticket");
+                var billybobs = new Location("billybobs","billybobs","You are at Billie Bob's Biker Bar and Bar-B-Q.", "Pistol");
+                var robs = new Location("robs","robs","You are standing next to Robs's Rent-A-Car.  There are several cars available, some with their windows open.", "Car Keys");
+                var street = new Location("street","street","You are 361 St.  It is a charming street, filled with shops and gift stores.", "Clothes");
+                var apartment = new Location("apartment","apartment","You are at your apartment building.", "");
+                var alley = new Location("alley","alley","You are in a back alley. You fish out a ratty town map from your storm grey suit pocket and look up Sinso Publishing.", "");
+                var bookstore = new Location("bookstore","bookstore","You are back at the bookstore.", "");
+                var subway = new Location("subway","subway","You have entered a subway station.", "");
+                var construction = new Location("construction","construction","You are wandering around an abandoned construction site.", "");
+                var sinso = new Location("sinso","sinso","You have arrived at Sinso Publishing.", "");
+
+                var arrayLocation = new Array();
+                arrayLocation[0] = apartment;
+                arrayLocation[1] = airport;
+                arrayLocation[2] = alley;
+                arrayLocation[3] = bookstore;
+                arrayLocation[4] = robs;
+                arrayLocation[5] = subway;
+                arrayLocation[6] = street;
+                arrayLocation[7] = construction;
+                arrayLocation[8] = sinso;
+                arrayLocation[9] = billybobs;
+
+    function Item(id,name,description) {
+      this.id = id;
+      this.name = name;
+      this.description = description;
+    this.toString=function() {
+       var retVal = "";
+       retVal = this.description + "\n";
+       return retVal;
+     }
+}
+    var ticket = new Item("ticket","ticket","There is an airplane ticket here.");
+    var carkeys = new Item("carkeys","carkeys","There are car keys on the ground");
+    var clothes = new Item("clothes","clothes","There is a pile of clothes, just your size, lying here");
+    var pistol = new Item("pistol","pistol","There is a pistol on the bar.");
+
+    var arrayItem = new Array();
+                arrayItem[0] = ticket;
+                arrayItem[1] = carkeys;
+                arrayItem[2] = clothes;
+                arrayItem[3] = pistol;
+
+		var total = 0;                 // Keeps total score
+		var hasVistedNorth = false;    // Determines if North has been used
+		var hasVistedSouth = false;    // Determines if South has been used
+		var hasVistedEast = false;     // Determines if East has been used
+		var hasVistedWest = false;     // Determines if West has been used
+		var place = "bookstore";       // place is one of 10 places.  Initial place is the bookstore
+                var totalInventory = "";       // Keeps list of all items taken and in inventory
+                var inventoryCount = 0;        // Keeps count of items in inventory
+                var ticketHome = true;         // ticketHome = true: Airplane ticket is in the airport
+                var carkeysHome = true;        // carkeysHome = true: Car keys are at Robs Rent-a-Car
+                var pistolHome = true;         // pistolHome = true: Pistol is at Billy Bobs
+                var clothesHome = true;        // clothesHome = true: Clothes are on 361st St.
+
+
+// function take() allows player to take items and add to inventory
+	function take() {
+                switch(place) {
+                        case airport.id:
+                             if (ticketHome) {
+                                  ticketMsg();
+                                  inventoryCount = inventoryCount + 1;
+                                  totalInventory = totalInventory + "\n" + " airplane ticket";
+                                  ticketHome = false;
+                             }
+                             else
+                                  nothingtotakeMsg();
+                        break;
+                        case billybobs.id:
+                             if (pistolHome) {
+                                  pistolMsg();
+                                  inventoryCount = inventoryCount + 1;
+                                  totalInventory = totalInventory + "\n" + " pistol";
+                                  pistolHome = false;
+                             }
+                             else
+                                  nothingtotakeMsg();
+                        break;
+                        case robs.id:
+                             if (carkeysHome) {
+                                  carkeysMsg();
+                                  inventoryCount = inventoryCount + 1;
+                                  totalInventory = totalInventory + "\n" + " car keys";
+                                  carkeysHome = false;
+                             }
+                             else
+                                  nothingtotakeMsg();
+                        break;
+                        case street.id:
+                             if (clothesHome) {
+                                  clothesMsg();
+                                  inventoryCount = inventoryCount + 1;
+                                  totalInventory = totalInventory + "\n" + " clothes";
+                                  clothesHome = false;
+                             }
+                             else
+                                  nothingtotakeMsg();
+                        break;
+                        default:
+                                  nothingtotakeMsg();
+                        break;
+                 }
+        }
+
+/*  Function move(direction) takes input from either the text box or the buttons.  Input will be either 1, 2, 3 or 4, depending on the direction chosen.  Function has 4 parts corresponding
+		to the four directions you can move in.  Each part then makes the move based on the input direction and updates the score.  */
+
+        function move(direction) {
+		switch(direction) {
+			case "west":
+                             switch (place) { 
+                                case apartment.id:
+				     ycngtwMsg();
+				     westValid = false;
+                                break;
+			        case airport.id:
+				     apartmentMsg();
+				     westValid = true;
+				     place = apartment.id;
+				     edButton(place);
+                                break;
+			        case alley.id:
+				     ycngtwMsg();
+				     westValid = false;
+                                break;
+			        case bookstore.id:
+				     alleyMsg();
+				     westValid = true;
+				     place = alley.id;
+				     edButton(place);
+                                break;
+			        case robs.id:
+				     bookstoreMsg();
+				     westValid = true;
+				     place = bookstore.id;
+				     edButton(place);
+                                break;
+			        case subway.id:
+				     ycngtwMsg();
+				     westValid = false;
+                                break;
+			        case street.id:
+				     subwayMsg();
+				     westValid = true;
+				     place = subway.id;
+				     edButton(place);
+                                break;
+			        case construction.id:
+				     ycngtwMsg();
+				     westValid = false;
+                                break;
+			        case sinso.id:
+				     billybobsMsg();
+				     westValid = true;
+				     place = billybobs.id;
+				     edButton(place);
+                                break;
+			        case billybobs.id:
+				     constructionMsg();
+				     westValid = true;
+				     place = construction.id;
+				     edButton(place);
+                                break;
+			        } if (!hasVistedWest && westValid) {
+			             total = total + 5;
+			             hasVistedWest = true;
+			        }
+                        break;
+		        case "east":
+                             switch (place) { 
+			        case apartment.id:
+				     airportMsg();
+				     eastValid = true;
+				     place = airport.id;
+				     edButton(place);
+                                break;
+			        case airport.id:
+				     ycngtwMsg();
+				     eastValid = false;
+                                break;
+			        case alley.id:
+				     bookstoreMsg();
+				     eastValid = true;
+				     place = bookstore.id;
+				     edButton(place);
+                                break;
+			        case bookstore.id:
+				     robsMsg();
+				     eastValid = true;
+				     place = robs.id;
+				     edButton(place);
+                                break;
+			        case robs.id:
+				     ycngtwMsg();
+				     eastValid = false;
+                                break;
+			        case subway.id:
+				     streetMsg();
+				     eastValid = true;
+				     place = street.id;
+				     edButton(place);
+                                break;
+			        case street.id:
+				     ycngtwMsg();
+				     eastValid = false;
+                                break;
+			        case construction.id:
+				     billybobsMsg();
+				     eastValid = true;
+				     place = billybobs.id;
+				     edButton(place);
+                                break;
+			        case sinso.id:
+				     ycngtwMsg();
+				     eastValid = false;
+                                break;
+			        case billybobs.id:
+				     sinsoMsg();
+				     eastValid = true;
+				     place = sinso.id;
+				     edButton(place);
+                                break;
+			     } if (!hasVistedEast && eastValid) {
+			          total = total + 5;
+			          hasVistedEast = true;
+			     }
+		        break; 
+		        case "north":
+                             switch (place) { 
+			        case apartment.id:
+				     ycngtwMsg();
+				     northValid = false;
+                                break;
+			        case airport.id:
+				     ycngtwMsg();
+				     northValid = false;
+                                break;
+			        case alley.id:
+				     ycngtwMsg();
+				     northValid = false;
+                                break;
+			        case bookstore.id:
+				     apartmentMsg();
+				     northValid = true;
+				     place = apartment.id;
+				     edButton(place)
+                                break;
+			        case robs.id:
+				     airportMsg();
+				     northValid = true;
+				     place = airport.id;
+				     edButton(place);
+                                break;
+			        case subway.id:
+				     alleyMsg();
+				     northValid = true;
+				     place = alley.id;
+				     edButton(place);
+                                break;
+			        case street.id:
+				     bookstoreMsg();
+				     northValid = true;
+				     place = bookstore.id;
+				     edButton(place);
+                                break;
+			        case construction.id:
+				     subwayMsg();
+				     northValid = true;
+				     place = subway.id;
+				     edButton(place);
+                                break;
+			        case sinso.id:
+				     ycngtwMsg();
+				     northValid = false;
+                                break;
+			        case billybobs.id:
+				     streetMsg();
+                                     place = street.id;
+				     northValid = true;
+                                     edButton(place);
+                                break;
+			     } if (!hasVistedNorth && northValid) {
+			          total = total + 5;
+			          hasVistedNorth = true;
+			}
+		        break;
+		        case "south":
+                             switch (place) {
+			        case apartment.id:
+				     bookstoreMsg();
+				     southValid = true;
+				     place = bookstore.id;
+				     edButton(place);
+                                break;
+			        case airport.id:
+				     robsMsg();
+				     southValid = true;
+				     place = robs.id;
+				     edButton(place);
+                                break;
+			        case alley.id:
+				     subwayMsg();
+				     southValid = true;
+				     place = subway.id;
+				     edButton(place);
+                                break;
+			        case bookstore.id:
+				     streetMsg();
+				     southValid = true;
+				     place = street.id;
+				     edButton(place);
+                                break;
+			        case robs.id:
+				     ycngtwMsg();
+				     southValid = false;
+                                break;
+			        case subway.id:
+				     constructionMsg();
+				     southValid = true;
+				     place = construction.id;
+				     edButton(place);
+                                break;
+			        case street.id:
+				     billybobsMsg();
+				     southValid = true;
+				     place = billybobs.id;
+				     edButton(place);
+                                break;
+			        case construction.id:
+				     ycngtwMsg();
+				     southValid = false;
+                                break;
+			        case sinso.id:
+				     ycngtwMsg();
+				     southValid = false;
+                                break;
+			        case billybobs.id:
+				     ycngtwMsg();
+				     southValid = false;
+                                break;
+			     } if (!hasVistedSouth && southValid) {
+			          total = total + 5;
+			          hasVistedSouth = true;
+			     }
+		     break; 
+               }	
+
+} 
+		
+//  Function edButton(place) - enable disable button - enables or disables buttons depending on the place.
+
+	function edButton(place) {
+                switch(place){
+		     case apartment.id:
+			document.getElementById("wbutton").disabled = true;
+			document.getElementById("ebutton").disabled = false;
+			document.getElementById("sbutton").disabled = false;
+			document.getElementById("nbutton").disabled = true;
+                        document.getElementById("tbutton").disabled = true;
+                     break;
+		     case airport.id:
+			document.getElementById("wbutton").disabled = false;
+			document.getElementById("ebutton").disabled = true;
+			document.getElementById("sbutton").disabled = false;
+			document.getElementById("nbutton").disabled = true;
+                        if (ticketHome)
+                           document.getElementById("tbutton").disabled = false;
+                        else
+                           document.getElementById("tbutton").disabled = true;
+                     break;
+		     case alley.id:
+			document.getElementById("wbutton").disabled = true;
+			document.getElementById("ebutton").disabled = false;
+			document.getElementById("sbutton").disabled = false;
+			document.getElementById("nbutton").disabled = true;
+                        document.getElementById("tbutton").disabled = true;
+                     break;
+		     case bookstore.id:
+			document.getElementById("wbutton").disabled = false;
+			document.getElementById("ebutton").disabled = false;
+			document.getElementById("sbutton").disabled = false;
+			document.getElementById("nbutton").disabled = false;
+                        document.getElementById("tbutton").disabled = true;
+                     break;
+		     case robs.id:
+			document.getElementById("wbutton").disabled = false;
+			document.getElementById("ebutton").disabled = true;
+			document.getElementById("sbutton").disabled = true;
+			document.getElementById("nbutton").disabled = false;
+                        if (carkeysHome)
+                           document.getElementById("tbutton").disabled = false;
+                        else
+                           document.getElementById("tbutton").disabled = true;
+		     break;
+                     case subway.id:
+			document.getElementById("wbutton").disabled = true;
+			document.getElementById("ebutton").disabled = false;
+			document.getElementById("sbutton").disabled = false;
+			document.getElementById("nbutton").disabled = false;
+                        document.getElementById("tbutton").disabled = true;
+                     break;
+		     case street.id:
+			document.getElementById("wbutton").disabled = false;
+			document.getElementById("ebutton").disabled = true;
+			document.getElementById("sbutton").disabled = false;
+			document.getElementById("nbutton").disabled = false;
+                        if (clothesHome)
+                           document.getElementById("tbutton").disabled = false;
+                        else
+                           document.getElementById("tbutton").disabled = true;
+                     break;
+		     case construction.id:
+			document.getElementById("wbutton").disabled = true;
+			document.getElementById("ebutton").disabled = false;
+			document.getElementById("sbutton").disabled = true;
+			document.getElementById("nbutton").disabled = false;
+                        document.getElementById("tbutton").disabled = true;
+                     break;
+		     case sinso.id:
+			document.getElementById("wbutton").disabled = false;
+			document.getElementById("ebutton").disabled = true;
+			document.getElementById("sbutton").disabled = true;
+			document.getElementById("nbutton").disabled = true;
+                        document.getElementById("tbutton").disabled = true;
+                     break;
+		     case billybobs.id:
+			document.getElementById("wbutton").disabled = false;
+			document.getElementById("ebutton").disabled = false;
+			document.getElementById("sbutton").disabled = true;
+			document.getElementById("nbutton").disabled = false;
+                        if (pistolHome)
+                           document.getElementById("tbutton").disabled = false;
+                        else
+                           document.getElementById("tbutton").disabled = true;
+                     break;
+		}
+	}
+
+// Function score() displays player score
+
+	function score(){
+		updateDisplay("Your score is  " + total);
+	}
+
+// Function inventoryBox() displays player inventory
+
+	function inventoryBox(){
+                if (inventoryCount == 0)
+                  updateDisplay("You do not have any items");
+                else
+		  updateDisplay("You have the following items " + totalInventory);
+		}
+
+// Function helpBox() displays the user help
+
+        function helpBox(){
+		updateDisplay ("The object of the game is to move around the map until you find Sinso Publishing." + "\n" + "You can either press a direction button or type E, e, W, w, N, n, S or s to move around." + "\n" + "Typing T or t will take an object (if available)." + "\n" + "Typing I or i will display your current inventory." + "\n" + "Typing H or h will bring up help information" + "\n" + "You can press the Score button to find your current score.");
+	}
+	
+//  Function updateDisplay(message) take one arguments and update the text box with that argument
+
+	function updateDisplay(message){
+		var ta = document.getElementById("game");
+		ta.value = message + "\n" + "\n" + ta.value;
+	}
+  
+// Function compass() takes user direction input for the four direction or take commands and clears input box after direction is input
+
+	function compass(){
+		var iDirection = document.getElementById("inputDirection");
+		userDirection = iDirection.value;
+		document.getElementById("inputDirection").value = "";
+		switch (userDirection){
+		case "W": move('west');
+		break;
+		case "w": move('west');
+ 		break;
+		case "E": move('east');
+		break;
+		case "e": move('east');
+		break;
+		case "N": move('north');
+		break;
+ 		case "n": move('north');
+		break;
+		case "S": move('south');
+		break;
+ 		case "s": move('south');
+		break;
+ 		case "T": take();
+		break;
+ 		case "t": take();
+		break;
+ 		case "I": inventoryBox();
+		break;
+ 		case "i": inventoryBox();
+		break;
+ 		case "H": helpBox();
+		break;
+ 		case "h": helpBox();
+		break;
+		default:updateDisplay("I don't understand that input.  Valid values are N, n, S, s, E, e, W, w, T, t, I and i.");
+		}
+ 	}
+
+// Function init() puts initial text in the textarea
+        function init() {
+                updateDisplay("You are in a bookstore. There, on a shelf, a cheap paper back thriller catches your attention.  You lift it up and see that is called \"Drug Lord Down\". Curious and slighty board, you open up the book to a random page, only to discover that your name, Carlos Lucus Forerunner, is in the book. You also realize that the book is through the police's view, and that you are the antagonist. Shocked, you read on, on to discover that he is, like you, a drug smuggler that belongs to the gang. The Pitbulls. He is also being chased by the Dark City Police and his wife was murdered by a rival gang member, just like you. You buy the book and look at the spine. The book was published by a company called Sinso and you realize that your only chance is to get to Sinso.");
+        }
+	</script>	
+	</head>
+	<body onload = "init()">
+
+	<h1>Antagonist Carlos</h1>
+
+<!-- Display map -->
+        <img src = "sinsomap.gif" width= "400" height = "400" >
+
+<!-- Set up buttons -->
+	<input	type = "button"
+		id = "wbutton"
+		value = "West"
+		onclick= "move('west');">
+	<input	type = "button"
+		id = "ebutton"
+		Value = "East"
+		onclick= "move('east');">
+	<input	type = "button"
+		id = "nbutton"
+		value = "North"
+		onclick= "move('north');">
+	<input 	type = "button"
+		id = "sbutton"
+		value = "South"
+		onclick = "move('south');">
+        <input 	type = "button"
+                id = "tbutton"
+		value = "Take"
+		onclick = "take();">
+        <input 	type = "button"
+		value = "Inventory"
+		onclick = "inventoryBox();">
+        <input 	type = "button"
+		value = "Score"
+		onclick = "score();">
+        <input	type = "button"
+		value = "Help"
+		onclick = "helpBox();">
+	
+       <br>
+
+<!-- Set up command input area and clear after receiving input -->
+	Command: <input type = "text" id= "inputDirection"><br>
+	<input type = "button" value = "Go" onclick = "compass() ;"><br>
+
+         <p>
+<!-- Set up textarea to give player information -->
+	<textarea align = "center" rows = "15" cols = "100" id = "game">  </textarea>
+	</p>
+ 	<br>
+	<a href = "mailto:Amelia.Beckham2@marist.edu">This is my mailto</a>
+ 
+	</body> 
